@@ -110,6 +110,7 @@
         @forelse ($indicadores as $indicador)
 
         @php
+
             $semaforo = "";
             $estado = "";
 
@@ -130,16 +131,17 @@
 
             if($indicador->tipo_indicador == "normal"){
 
-                if($indicador->meta_esperada < $valor){
+                if($indicador->meta_esperada <= $valor){
                     $semaforo = "bg-success";
                     $estado = "verde";
                 }
 
-                if($indicador->meta_esperada >= $valor){
+                if($indicador->meta_esperada > $valor){
                     $semaforo = "bg-danger";
                     $estado = "rojo";
                 }
             }
+            
         @endphp
                 
             <div class="col-10 col-sm-10 col-md-6 col-lg-4 my-3 indicador_card" data-tipo="{{ $indicador->tipo_indicador }}"  data-estado="{{ $estado }}" data-planta="{{ $indicador->planta }}"  data-departamento="{{ $indicador->departamento->nombre }}">

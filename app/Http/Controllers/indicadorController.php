@@ -3351,7 +3351,13 @@ else{
             
         }
 
-        $campos_llenos = IndicadorLleno::where('id_movimiento', $ultimo_mes->id_movimiento)->get();
+        if(isset($ultimo_mes->id_movimiento)){
+            $campos_llenos = IndicadorLleno::where('id_movimiento', $ultimo_mes->id_movimiento)->get();
+        }
+        else{
+            return back()->with('error', "No hay informacion registrada en este indicador");
+        }
+
         //Aqui va a ir el codigo que me permite consultar los datos del ultimo mes
 
 

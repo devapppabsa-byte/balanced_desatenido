@@ -90,7 +90,7 @@
     <script type="text/javascript" src="{{asset('js/mdb.umd.min.js')}}"></script> 
     <script src="{{asset('js/chart.js')}}"></script>
     <script src="{{asset('js/interact.min.js')}}"></script>
-    <script src="{{asset('js/draggable.js')}}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/quill-better-table@1.2.10/dist/quill-better-table.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>

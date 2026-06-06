@@ -136,13 +136,13 @@
     </div>
 
 
-    <div class="col-auto">
+    {{-- <div class="col-auto">
         <a href="{{ route('revision.indicadores') }}"
            class="admin-link {{ request()->routeIs('revision.indicadores') ? 'active' : '' }}">
             <i class="fa-solid fa-magnifying-glass"></i>
             <span>Buscador Indicadores</span>
         </a>
-    </div>
+    </div> --}}
 
 
     <div class="col-auto">

@@ -25,6 +25,9 @@ return new class extends Migration
             $table->string('unidad_medida');
             $table->string('variacion');
             $table->string('planta')->nullable();
+            //se agregaran columnas para la gestion de los indicadores
+            $table->string('porcentaje_riesgo')->nullable();
+            $table->string('evaluacion_anual')-nullable();
             
             $table->unsignedBigInteger('id_departamento');
             $table->foreign('id_departamento')

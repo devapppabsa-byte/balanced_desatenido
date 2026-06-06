@@ -847,17 +847,29 @@
                                             while ($cursor <= $finMeses) { $meses->push($cursor->format('Y-m')); $cursor->addMonth(); }
                                             $total_apartados = DB::table('apartado_norma')->where('id_norma', $norma->id)->count();
                                             $porMes = DB::table('apartado_norma as an')->leftJoin('cumplimiento_norma as cn', function ($join) use ($inicioConsulta, $finConsulta) { $join->on('cn.id_apartado_norma', '=', 'an.id')->whereBetween('cn.created_at', [$inicioConsulta, $finConsulta]); })->where('an.id_norma', $norma->id)->whereNotNull('cn.created_at')->select(DB::raw("DATE_FORMAT(DATE_SUB(cn.created_at, INTERVAL 1 MONTH), '%Y-%m') as mes"), DB::raw('COUNT(DISTINCT cn.id_apartado_norma) as cumplidos'))->groupBy(DB::raw("DATE_FORMAT(DATE_SUB(cn.created_at, INTERVAL 1 MONTH), '%Y-%m')"))->pluck('cumplidos', 'mes');
-                                            $porcentajes = $meses->map(function ($mes) use ($porMes, $total_apartados) { $cumplidos = $porMes[$mes] ?? 0; return ($total_apartados == 0) ? 0 : ($cumplidos / $total_apartados) * 100; });
+                                            $porcentajes = $meses->map(function ($mes) use ($porMes,
+                                             $total_apartados) { $cumplidos = $porMes[$mes] ?? 0; return ($total_apartados == 0) ? 0 : ($cumplidos / $total_apartados) * 100; });
+
                                             $promedio_cumplimiento_n = round($porcentajes->avg(), 2);
+
                                             $aporte_norma = ($promedio_cumplimiento_n * $norma->ponderacion_norma) / 100;
                                             $suma_cumplimientos_normas += $aporte_norma;
                                         @endphp
                                         <div class="d-flex align-items-center mb-2 p-2 border-start border-warning border-4 bg-light rounded-end shadow-sm">
                                             <div class="flex-grow-1 ms-2">
-                                                <a href="{{route('apartado.norma', $norma->id)}}" target="_blank" class="fw-bold text-dark text-decoration-none small d-block">{{ $norma->nombre }}</a>
+                                                
+                                                <a href="{{route('apartado.norma', $norma->id)}}" target="_blank" class="fw-bold text-dark text-decoration-none small d-block">
+                                                    {{ $norma->nombre }}
+                                                </a>
+
                                             </div>
                                             <div class="text-end px-2">
-                                                <span class="fw-bold text-warning">{{ number_format($aporte_norma, 2) }}%</span>
+                                                <span class="fw-bold text-warning">
+                                                    {{ number_format($aporte_norma, 2) }}%
+                                                </span>
+                                                <small class="text-muted">Aporte: {{ ($aporte_norma  * $norma->ponderacion_norma) / 100 }} % </small>
+
+
                                             </div>
                                         </div>
                                     @endforeach
