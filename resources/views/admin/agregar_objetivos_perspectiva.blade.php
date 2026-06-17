@@ -238,7 +238,7 @@
                                         <h3 class="text-dark fw-bold">
                                             Meta:  <span class="fw-bold">{{ $objetivo->meta }} %</span> 
                                         </h3>
-                                        <h6 class=" badge badge-lg {{ ($suma_ponderacion === 100) ? 'badge-success' : 'badge-danger' }}">
+                                        <h6 class=" badge badge-lg {{ ($suma_ponderacion == 100) ? 'badge-success' : 'badge-danger' }}">
                                             <i class="fa fa-exclamation-circle"></i>  
                                             Suma de las ponderaciones de los indicadores:  
                                             <span class="fw-bold">
@@ -272,7 +272,7 @@
                                                                 @if(!is_null($indicador->ponderacion_indicador))
                                                                     <span class="text-success">
                                                                         -  Ponderacion: 
-                                                                        {{ $indicador->ponderacion_indicador }}%
+                                                                        {{ $indicador->ponderacion_indicador }} %
                                                                     </span>
                                                                 @endif
 
@@ -300,9 +300,12 @@
                                                                         array_push($array_datos, $informacion_indicador->informacion_campo);
                                                                     
                                                                     }
-                                                    
                                                                 @endphp
                                                             <span>
+
+
+
+
 
                                                                 <i class="fa-solid fa-gauge"></i>
                                                                 Promedio Cumplimiento: 
@@ -313,6 +316,7 @@
                                                                         @php
                                                                             $promedio_cumplimiento;    
                                                                         @endphp
+                                                                        
                                                                         
                                                                         @if ($indicador->tipo_indicador == "normal")
 
@@ -362,9 +366,7 @@
                                                         
                                                     </div>
 
-                                                        
-
-                                                    </div>
+                                            </div>
 
                                                             
                                             {{-- modales para la ponderacion --}}

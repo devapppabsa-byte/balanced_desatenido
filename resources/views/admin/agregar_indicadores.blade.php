@@ -727,14 +727,29 @@
 
                 <div class="col-12 text-center">
                     <div class="form-group mt-3">
-                        <div class="form-outline" data-mdb-input-init>
                             <div class="form-outline" data-mdb-input-init>
                                 <textarea class="form-control w-100 {{ $errors->first('descripcion') ? 'is-invalid' : '' }}" id="descrpcion" name="descripcion" required ></textarea>
                                 <label class="form-label" for="descrpcion">Descripción del indicador  <span class="text-danger">*</span></label>
                             </div>
-                        </div>
                     </div>
                 </div>
+
+
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
+                    <div class="form-check form-switch mt-2">
+                    <input class="form-check-input"  value="anual" name="perioricidad_anual" type="checkbox" role="switch" id="perioricidad_anual" />
+                    <label class="form-check-label" for="perioricidad_anual">Anual.</label>
+                    </div>                                
+                </div>
+
+
+                <div class="col-12 col-sm-4 col-md-4 col-lg-4 ">
+                    <div class="form-check form-switch mt-2">
+                    <input class="form-check-input" value="riesgo_porcentaje" name="riesgo_porcentaje" type="checkbox" role="switch" id="riesgo_porcentaje" />
+                    <label class="form-check-label" for="riesgo_porcentaje">Riesgo Porcenjate.</label>
+                    </div>                                
+                </div>
+
 
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 mt-4 border-left">
                     <div class="row d-flex align-items-center justify-content-center">
@@ -1002,12 +1017,33 @@
     
                                 </select>
                             </div>
+
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 d-flex align-items-center">
                                 <div class="form-check form-switch mt-4 pt-4">
-                                <input class="form-check-input" name="indicador_variacion_edit" type="checkbox" role="switch" id="flexSwitchCheckDefault" {{ $indicador->variacion === "on" ? 'checked' : '' }} />
-                                <label class="form-check-label" for="flexSwitchCheckDefault">Variación</label>
+                                <input class="form-check-input" name="indicador_variacion_edit" type="checkbox" role="switch" id="flexSwitchCheckDefault1" {{ $indicador->variacion === "on" ? 'checked' : '' }} />
+                                <label class="form-check-label" for="flexSwitchCheckDefault1">Variación</label>
                                 </div>                                
                             </div>
+
+
+
+
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 d-flex align-items-center">
+                                <div class="form-check form-switch mt-4 pt-4">
+                                <input class="form-check-input" name="perioricidad_edit" type="checkbox" role="switch" id="flexSwitchCheckAnual" {{ $indicador->perioricidad_perspectivas === "anual" ? 'checked' : '' }} />
+                                <label class="form-check-label" for="flexSwitchCheckAnual">Anual </label>
+                                </div>                                
+                            </div>
+
+                            
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 d-flex align-items-center">
+                                <div class="form-check form-switch mt-4 pt-4">
+                                <input class="form-check-input" name="riesgo_porcentaje_edit" type="checkbox" role="switch" id="flexSwitchCheckRiesgo" {{ $indicador->indicador_riesgo_porcentaje === "riesgo_porcentaje" ? 'checked' : '' }} />
+                                <label class="form-check-label" for="flexSwitchCheckRiesgo">Riesgo </label>
+                                </div>                                
+                            </div>
+
+
                         </div>
 
 

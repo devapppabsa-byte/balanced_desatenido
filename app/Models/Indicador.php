@@ -10,6 +10,7 @@ class Indicador extends Model
     protected $table = 'indicadores';
     
     protected $fillable = [
+
         'nombre', 
         'meta_esperada',
         'meta_minina', 
@@ -21,7 +22,9 @@ class Indicador extends Model
         'creador',
         'unidad_medida',
         'variacion',
-        'planta'
+        'planta',
+        'perioricidad_perspectivas',
+        'indicador_riesgo_porcentaje' //muestra si el indicador es de riesgo y aparte se maneja en porcentaje
     ];
 
 

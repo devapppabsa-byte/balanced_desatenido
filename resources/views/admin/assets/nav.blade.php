@@ -212,7 +212,7 @@
 
     @auth
     
-        @if (Auth::guard('admin')->user()->email === 'arturo.resendiz@grupopabsa.com')
+        @if (Auth::guard('admin')->user()->id === 2)
             <div class="col-auto">
                 <a href="{{ route('logs.show.admin') }}"
                 class="admin-link {{ request()->routeIs('logs.show.admin') ? 'active' : '' }}">

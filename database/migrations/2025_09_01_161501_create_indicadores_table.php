@@ -20,6 +20,11 @@ return new class extends Migration
             $table->string('ponderacion');
             $table->string('tipo_indicador');
             $table->string('creador');
+
+            $table->string("perioricidad_perspectivas")->nullable();
+            $table->string('indicador_riesgo_porcentaje')->nullable();
+
+
             $table->string('id_objetivo_perspectiva')->nullable();
             $table->string('ponderacion_indicador')->nullable();
             $table->string('unidad_medida');

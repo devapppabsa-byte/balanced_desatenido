@@ -466,6 +466,12 @@ OS --}}
                 <form action="{{route('editar.campo', [$campo_calculado->id, 'calculado'])}}" method="POST">
                     @csrf @method('PUT')
 
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nombre" name="nombre_campo"  value="{{$campo_calculado->nombre}}" >
+                    </div>
+
+
                     <div class="form-group">
                         <select name="unidad_medida" 
                                 class="form-select form-select-lg w-100 {{ $errors->first('unidad_medida') ? 'is-invalid' : '' }}"  
@@ -563,6 +569,11 @@ OS --}}
                 <form action="{{route('editar.campo', [$campo_precargado->id, 'precargado'])}}" method="POST">
                     @csrf @method('PUT')
 
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" value="{{$campo_precargado->nombre}}"  placeholder="Nombre" name="nombre_campo">
+                    </div>
+
                     <div class="form-group">
                         <select name="unidad_medida" 
                                 class="form-select form-select-lg w-100 {{ $errors->first('unidad_medida') ? 'is-invalid' : '' }}"  
@@ -659,6 +670,10 @@ OS --}}
 
                 <form action="{{route('editar.campo', [$campo_vacio->id, 'vacio'])}}" method="POST">
                     @csrf @method('PUT')
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Nombre"  value="{{$campo_vacio->nombre}}"  name="nombre_campo">
+                    </div>
 
                     <div class="form-group">
                         <select name="unidad_medida" 

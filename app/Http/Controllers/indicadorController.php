@@ -103,7 +103,15 @@ class indicadorController extends Controller
 
     public function agregar_indicadores_store(Request $request, Departamento $departamento){
 
-    
+        //return $request;
+        //return $request->perioricidad_anual;
+        //return $request->riesgo_porcentaje;
+
+        
+        //forma de evaluarlos en las perspectivas
+
+
+
 
         $autor = 'Id: '.auth()->guard('admin')->user()->id.' - '.auth()->guard('admin')->user()->nombre .' - '. $puesto_autor = auth()->guard('admin')->user()->puesto;
 
@@ -131,6 +139,11 @@ class indicadorController extends Controller
         $indicador->tipo_indicador = $request->tipo_indicador;
         $indicador->variacion = $request->indicador_variacion;
         $indicador->planta = $request->planta;
+
+        $indicador->perioricidad_perspectivas = $request->perioricidad_anual;
+        $indicador->indicador_riesgo_porcentaje = $request->riesgo_porcentaje;
+                //return $request->perioricidad_anual;
+        //return $request->riesgo_porcentaje;
 
         // if ($request->planta_1 == "active") $indicador->planta_1 = $request->planta_1;
         // if ($request->planta_2 == "active") $indicador->planta_2 =  $request->planta_2;
@@ -183,6 +196,12 @@ class indicadorController extends Controller
 
     public function indicador_edit(Request $request, Indicador $indicador){
 
+
+        
+
+        // riesgo_porcentaje_edit     riesgo_porcentaje
+        // perioricidad_edit       anual
+        
         
         $autor = 'Id: '.auth()->guard('admin')->user()->id.' - '.auth()->guard('admin')->user()->nombre .' - '. $puesto_autor = auth()->guard('admin')->user()->puesto;
 
@@ -216,6 +235,13 @@ class indicadorController extends Controller
         }
 
 
+            // "perioricidad_edit": "on",
+            // "riesgo_porcentaje_edit": "on"
+            
+
+
+
+
 
         $indicador->nombre = $request->nombre_indicador_edit;
         $indicador->meta_esperada = $request->meta_esperada;
@@ -225,6 +251,9 @@ class indicadorController extends Controller
         $indicador->unidad_medida = $request->unidad_medida;
         $indicador->variacion = $request->indicador_variacion_edit;
         $indicador->planta = $request->planta_indicador;
+        $indicador->perioricidad_perspectivas = $request->perioricidad_edit;
+        $indicador->indicador_riesgo_porcentaje = $request->riesgo_porcentaje_edit;
+
         $indicador->update();
 
 
@@ -386,6 +415,7 @@ public function editar_campo(Request $request, $campo, $tipo_campo){
 
         $precargado = CampoPrecargado::findOrFail($campo);
         $precargado->unidad_medida = $request->unidad_medida;
+        $precargado->nombre = $request->nombre_campo;
         $precargado->update();
 
 
@@ -417,6 +447,7 @@ public function editar_campo(Request $request, $campo, $tipo_campo){
 
         $vacio = CampoVacio::findOrFail($campo);
         $vacio->unidad_medida = $request->unidad_medida;
+        $vacio->nombre = $request->nombre_campo;
         $vacio->update();
         
         
@@ -448,6 +479,7 @@ public function editar_campo(Request $request, $campo, $tipo_campo){
         
         $calculado = CampoCalculado::findOrFail($campo);
         $calculado->unidad_medida = $request->unidad_medida;
+        $calculado->nombre = $request->nombre_campo;
         $calculado->update();
 
 

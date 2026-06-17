@@ -160,8 +160,6 @@ class perspectivaController extends Controller
                  ->utc()
              : Carbon::parse("2026-01-01T06:00:00.000000Z");
 
-             
-
          $fin = request()->filled('fecha_fin')
              ? Carbon::parse(request('fecha_fin'), config('app.timezone'))
                  //->subMonth()    
